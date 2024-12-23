@@ -45,7 +45,7 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
                 onChange={handdleChangeInput}
                 required={true}
             />
-            <label className="p-2"> X1 +</label>
+            <label className="p-2">X1 +</label>
             <Input
                 type="text"
                 name="x2"
