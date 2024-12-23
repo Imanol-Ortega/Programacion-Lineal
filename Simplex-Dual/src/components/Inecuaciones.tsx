@@ -1,5 +1,6 @@
 import useSimplexStore from "@/store/simplexStore";
 import React, { useEffect, useState, type ChangeEvent } from "react";
+import Input from "./Input";
 
 interface Inecuacion {
     x1: number;
@@ -38,20 +39,18 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
 
     return (
         <div>
-            <input
+            <Input
                 type="text"
-                className="w-20 rounded-sm text-gray-900 text-xs p-1 bg-gray-300 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                 name="x1"
                 onChange={handdleChangeInput}
-                required
+                required={true}
             />
             <label className="p-2"> X1 +</label>
-            <input
+            <Input
                 type="text"
-                className="w-20 rounded-sm text-gray-900 text-xs p-1 bg-gray-300 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                 name="x2"
                 onChange={handdleChangeInput}
-                required
+                required={true}
             />
             <label className="p-2">X2</label>
             <select
@@ -63,12 +62,11 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
                 <option value="1">{"<="}</option>
                 <option value="2">{">="}</option>
             </select>
-            <input
+            <Input
                 type="text"
-                className="w-20 rounded-sm text-gray-900 text-xs p-1 bg-gray-300 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none m-2"
                 name="valres"
                 onChange={handdleChangeInput}
-                required
+                required={true}
             />
         </div>
     );
