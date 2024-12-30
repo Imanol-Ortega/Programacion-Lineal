@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Inecuaciones from "./Inecuaciones";
+import Inecuaciones from "./Inecuacion";
 import { AddPlus, RemoveMinus } from "@/icons/Actions";
 import useSimplexStore from "@/store/simplexStore";
 import Input from "./Input";
+import { convertirInecuacionesAEcuaciones } from "./convertirEcuacion";
 
 function Simplex() {
     const [input, setInput] = useState<string[]>(["", ""]);
@@ -28,6 +29,8 @@ function Simplex() {
             alert("Debe haber al menos dos inecuaciones");
             return;
         }
+        const ecuaciones = convertirInecuacionesAEcuaciones(inecuaciones);
+        console.table(ecuaciones);
     };
 
     return (

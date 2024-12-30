@@ -1,13 +1,7 @@
 import useSimplexStore from "@/store/simplexStore";
 import React, { useEffect, useState, type ChangeEvent } from "react";
 import Input from "./Input";
-
-interface Inecuacion {
-    x1: number;
-    x2: number;
-    restriccion: number;
-    valres: number;
-}
+import { type Inecuacion } from "@/interfaces/interfaceSimplex";
 
 interface InecuacionProps {
     index: number;
@@ -17,17 +11,11 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
     const [inecuacionSimple, setInecuacionSimple] = useState<Inecuacion>({
         x1: 0,
         x2: 0,
-        restriccion: 1,
+        restriccion: 0,
         valres: 0,
     });
     const inecuaciones = useSimplexStore((state) => state.inecuaciones);
     const setInecuaciones = useSimplexStore((state) => state.setInecuaciones);
-
-    useEffect(() => {
-        const inn = [...inecuaciones];
-        inn[index] = inecuacionSimple;
-        setInecuaciones(inn);
-    }, [inecuacionSimple]);
     const handdleChangeInput = (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -36,6 +24,11 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
             [e.target.name]: Number(e.target.value),
         });
     };
+    useEffect(() => {
+        const inn = [...inecuaciones];
+        inn[index] = inecuacionSimple;
+        setInecuaciones(inn);
+    }, [inecuacionSimple]);
 
     return (
         <div>
@@ -59,8 +52,8 @@ const Inecuaciones: React.FC<InecuacionProps> = ({ index }) => {
                 onChange={handdleChangeInput}
                 required
             >
-                <option value="1">{"<="}</option>
-                <option value="2">{">="}</option>
+                <option value="0">{"<="}</option>
+                <option value="1">{">="}</option>
             </select>
             <Input
                 type="text"
