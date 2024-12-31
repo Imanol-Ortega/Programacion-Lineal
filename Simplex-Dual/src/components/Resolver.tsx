@@ -1,10 +1,15 @@
 import useSimplexStore from "@/store/simplexStore";
 import React, { useEffect, useState } from "react";
+import {
+    convertirFO,
+    convertirInecuacionesAEcuaciones,
+} from "./agregarFicticias";
+
+//
 
 function Resolver() {
     const inecuaciones = useSimplexStore((state) => state.inecuaciones);
     const funcionObjetivo = useSimplexStore((state) => state.funcionObjetivo);
-
     const [resolver, setResolver] = useState({
         ecuaciones: [],
         cj: [],
@@ -17,7 +22,11 @@ function Resolver() {
         BK: [],
         pita: [],
     });
-    const resolvedor = () => {};
+    const resolvedor = () => {
+        console.log(inecuaciones);
+        console.log(convertirInecuacionesAEcuaciones(inecuaciones));
+        console.log(convertirFO(inecuaciones, funcionObjetivo));
+    };
 
     useEffect(() => {
         resolvedor();
