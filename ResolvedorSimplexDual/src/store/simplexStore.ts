@@ -2,7 +2,7 @@ import { create } from "zustand";
 import {
     type Inecuacion,
     type FuncionObjetivo,
-} from "@/interfaces/interfaceSimplex";
+} from "../interfaces/interfaceSimplex";
 interface SimplexStoreState {
     funcionObjetivo: FuncionObjetivo;
     inecuaciones: Inecuacion[];
